@@ -1,0 +1,86 @@
+:root {
+  --color1: #604652;
+  --color2: #735557;
+  --color3: #97866A;
+  --color4: #D29F80;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--color3);
+  color: #fff;
+}
+
+header {
+  background-color: var(--color1);
+  padding: 1em;
+  text-align: center;
+}
+
+nav a {
+  color: var(--color4);
+  margin: 0 1em;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.hero {
+  background-color: var(--color2);
+  padding: 4em 2em;
+  text-align: center;
+}
+
+.hero h1 {
+  margin-bottom: 0.5em;
+  font-size: 2.5em;
+}
+
+.services {
+  background-color: var(--color3);
+  padding: 2em;
+  color: #000;
+}
+
+.service {
+  background-color: var(--color4);
+  padding: 1em;
+  margin: 1em 0;
+  border-radius: 8px;
+  color: #000;
+}
+
+.contact {
+  background-color: var(--color1);
+  padding: 2em;
+}
+
+footer {
+  background-color: var(--color2);
+  text-align: center;
+  padding: 1em;
+  font-size: 0.9em;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0.5em;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+  border: none;
+  border-radius: 5px;
+}
+
+button {
+  background-color: var(--color4);
+  color: #000;
+  border: none;
+  padding: 0.7em 1.2em;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #b67b60;
+}
