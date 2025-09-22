@@ -1,55 +1,166 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Peluquería Elegancia</title>
-  <link rel="stylesheet" href="estilos.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión - Peluquería Elegante</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="container">
+        <header class="header">
+            <h1>✂️ Peluquería Elegante</h1>
+            <p>Sistema de Gestión de Turnos</p>
+        </header>
 
-  <header>
-    <h1>Peluquería Elegancia</h1>
-    <nav>
-      <a href="#servicios">Servicios</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
-  </header>
+        <nav class="navigation">
+            <button class="nav-btn active" data-section="reservar">Reservar Turno</button>
+            <button class="nav-btn" data-section="turnos">Ver Turnos</button>
+            <button class="nav-btn" data-section="clientes">Clientes</button>
+        </nav>
 
-  <section class="hero">
-    <h1>Transforma tu estilo</h1>
-    <p>Expertos en belleza y cuidado capilar</p>
-  </section>
+        <!-- Sección Reservar Turno -->
+        <section id="reservar" class="section active">
+            <div class="form-container">
+                <h2>Reservar Nuevo Turno</h2>
+                <form id="turnoForm">
+                    <div class="form-group">
+                        <label for="cliente">Nombre del Cliente</label>
+                        <input type="text" id="cliente" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" id="telefono" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="servicio">Servicio</label>
+                        <select id="servicio" required>
+                            <option value="">Seleccionar servicio</option>
+                            <option value="corte">Corte de Cabello - $15</option>
+                            <option value="lavado">Lavado y Peinado - $10</option>
+                            <option value="tintura">Tintura - $35</option>
+                            <option value="permanente">Permanente - $45</option>
+                            <option value="alisado">Alisado - $50</option>
+                            <option value="tratamiento">Tratamiento Capilar - $25</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fecha">Fecha</label>
+                            <input type="date" id="fecha" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="hora">Hora</label>
+                            <select id="hora" required>
+                                <option value="">Seleccionar hora</option>
+                                <option value="09:00">09:00</option>
+                                <option value="09:30">09:30</option>
+                                <option value="10:00">10:00</option>
+                                <option value="10:30">10:30</option>
+                                <option value="11:00">11:00</option>
+                                <option value="11:30">11:30</option>
+                                <option value="12:00">12:00</option>
+                                <option value="12:30">12:30</option>
+                                <option value="14:00">14:00</option>
+                                <option value="14:30">14:30</option>
+                                <option value="15:00">15:00</option>
+                                <option value="15:30">15:30</option>
+                                <option value="16:00">16:00</option>
+                                <option value="16:30">16:30</option>
+                                <option value="17:00">17:00</option>
+                                <option value="17:30">17:30</option>
+                                <option value="18:00">18:00</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="notas">Notas adicionales</label>
+                        <textarea id="notas" rows="3" placeholder="Comentarios especiales..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary">Reservar Turno</button>
+                </form>
+            </div>
+        </section>
 
-  <section class="services" id="servicios">
-    <h2>Servicios</h2>
-    <div class="service">
-      <h3>Corte de cabello</h3>
-      <p>Estilos modernos y personalizados.</p>
+        <!-- Sección Ver Turnos -->
+        <section id="turnos" class="section">
+            <div class="turnos-container">
+                <div class="section-header">
+                    <h2>Turnos Programados</h2>
+                    <div class="filter-controls">
+                        <input type="date" id="filtroFecha" placeholder="Filtrar por fecha">
+                        <select id="filtroEstado">
+                            <option value="">Todos los estados</option>
+                            <option value="confirmado">Confirmados</option>
+                            <option value="pendiente">Pendientes</option>
+                            <option value="completado">Completados</option>
+                            <option value="cancelado">Cancelados</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="turnos-stats">
+                    <div class="stat-card">
+                        <span class="stat-number" id="turnosHoy">0</span>
+                        <span class="stat-label">Turnos Hoy</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="turnosTotal">0</span>
+                        <span class="stat-label">Total Turnos</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="ingresosDia">$0</span>
+                        <span class="stat-label">Ingresos Hoy</span>
+                    </div>
+                </div>
+                
+                <div id="listaTurnos" class="turnos-list">
+                    <!-- Los turnos se cargarán aquí dinámicamente -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Clientes -->
+        <section id="clientes" class="section">
+            <div class="clientes-container">
+                <h2>Base de Clientes</h2>
+                <div class="search-container">
+                    <input type="text" id="buscarCliente" placeholder="Buscar cliente por nombre o teléfono...">
+                </div>
+                <div id="listaClientes" class="clientes-list">
+                    <!-- Los clientes se cargarán aquí dinámicamente -->
+                </div>
+            </div>
+        </section>
     </div>
-    <div class="service">
-      <h3>Coloración</h3>
-      <p>Tintes, balayage, mechas y más.</p>
+
+    <!-- Modal para editar turno -->
+    <div id="modalTurno" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Editar Turno</h2>
+            <div id="modalBody">
+                <!-- Contenido del modal se carga dinámicamente -->
+            </div>
+        </div>
     </div>
-    <div class="service">
-      <h3>Tratamientos</h3>
-      <p>Hidratación, alisado, keratina.</p>
+
+    <!-- Notificaciones -->
+    <div id="notificacion" class="notificacion">
+        <span id="notificacionTexto"></span>
     </div>
-  </section>
 
-  <section class="contact" id="contacto">
-    <h2>Contacto</h2>
-    <form>
-      <input type="text" placeholder="Tu nombre" required>
-      <input type="email" placeholder="Tu correo" required>
-      <textarea placeholder="Tu mensaje" rows="4" required></textarea>
-      <button type="submit">Enviar</button>
-    </form>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 Peluquería Elegancia. Todos los derechos reservados.</p>
-  </footer>
-
+    <script src="script.js"></script>
 </body>
 </html>
